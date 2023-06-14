@@ -7,7 +7,7 @@
 <body>
     <form method="post">
         <label for="login">Input your login:</label>
-        <input id="login" type="text" required>
+        <input id="login" type="text" onkeyup="checkLogin()" required>
         <p></p>
         <label for="password">Input your password:</label>
         <input id="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!?@#$%^&*_=+]).{8,}" required>
@@ -26,5 +26,6 @@
         <p></p>
         <input type="submit" value="Register">
     </form>
+    <script src="../static/script.js"></script>
 </body>
 </html>
