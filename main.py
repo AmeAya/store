@@ -20,3 +20,7 @@ def homePage():
 @app.get('/reg')
 def registerPage():
     return FileResponse('templates/home.html')
+
+@app.get('/check')
+def check(login):
+    pass
