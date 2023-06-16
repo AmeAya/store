@@ -1,5 +1,5 @@
 import psycopg2
-from fastapi import FastAPI
+from fastapi import FastAPI, Form
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -23,6 +23,17 @@ def homePage():
 def registerPage():
     return FileResponse('templates/reg.html')
 
+@app.post('/reg')
+def registration(
+        login: str = Form(),
+        password: str = Form(),
+        name: str = Form(),
+        surname: str = Form(),
+        tel: str = Form(),
+        iin: str = Form()
+):
+    print(login, password, name, surname, tel, iin)
+
 @app.get('/check')
 def check(login):
     cursor.execute("SELECT login FROM users WHERE login='" + login + "';")
@@ -30,5 +41,3 @@ def check(login):
         return JSONResponse({'isAvailable': False})
     else:
         return JSONResponse({'isAvailable': True})
-# если логин занят return JSONResponse({'isAvailable': False})
-# иначе return JSONResponse({'isAvailable': True})

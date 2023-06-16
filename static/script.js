@@ -6,7 +6,11 @@ function checkLogin() {
     Request.onreadystatechange = function() {
         if (Request.readyState == 4) {
             var response = JSON.parse(Request.responseText);
-            alert(response.isAvailable);
+            if (response.isAvailable) {
+                loginInput.style.boxShadow = '0 0 10px green'
+            } else {
+                loginInput.style.boxShadow = '0 0 10px red'
+            }
         }
     }
 
