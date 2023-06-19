@@ -41,3 +41,15 @@ def check(login):
         return JSONResponse({'isAvailable': False})
     else:
         return JSONResponse({'isAvailable': True})
+
+@app.get('/categories')
+def getCategories():
+    # Достает из БД имена и id всех категорий. Возвращает из в JSON формате
+    cursor.execute("SELECT id, name FROM categories")
+    categories = []
+    for category in cursor.fetchall():
+        categories.append({
+            'id': category[0],
+            'name': category[1]
+        })
+    return JSONResponse(categories)
