@@ -8,31 +8,10 @@
     <select id="select-categories">
 
     </select>
-    <button id="button_show_goods">Show all goods</button>
+    <button id="button_show_goods" onclick="loadGoods()">Show all goods</button>
     <div id="div_goods">
 
     </div>
 </body>
-<script>
-    window.onload = function() {
-        var Request = new XMLHttpRequest();
-        var select = document.getElementById('select-categories');
-
-        Request.onreadystatechange = function() {
-            if (Request.readyState == 4) {
-                var categories = JSON.parse(Request.responseText);
-                for (var category of categories) {
-                    var option = document.createElement("option");
-                    option.text = category.name;
-                    option.value = category.id;
-                    select.add(option, null);
-                }
-            }
-        }
-
-        var url = 'http://127.0.0.1:8000/categories';
-        Request.open('get', url, true);
-        Request.send(null);
-    }
-</script>
+<script src="../static/script_home.js"></script>
 </html>

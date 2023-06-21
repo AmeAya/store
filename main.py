@@ -54,6 +54,17 @@ def getCategories():
         })
     return JSONResponse(categories)
 
-@app.get('')
-def goodsByCategory():
-    pass
+@app.get('/goodsByCategory')
+def goodsByCategory(category):
+    cursor.execute('SELECT id, name FROM goods WHERE category_id=' + str(category))
+    goods = []
+    for good in cursor.fetchall():
+        goods.append({
+            'id': good[0],
+            'name': good[1]
+        })
+    return JSONResponse(goods)
+
+@app.get('/test')
+def test():
+    return FileResponse('media/Patrick.jpeg')
