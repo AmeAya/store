@@ -53,3 +53,7 @@ def getCategories():
             'name': category[1]
         })
     return JSONResponse(categories)
+
+@app.get('')
+def goodsByCategory():
+    pass
