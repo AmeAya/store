@@ -27,8 +27,11 @@ function loadGoods() {
     Request.onreadystatechange = function() {
         if (Request.readyState == 4) {
             for (var good of JSON.parse(Request.responseText)) {
-                var p = document.createElement("p");
-                p.textContent = good.name;
+                var p = document.createElement('p');
+                var a = document.createElement('a');
+                a.textContent = good.name;
+                a.href = '/good_detail?good_id=' + good.id;
+                p.appendChild(a);
                 div.appendChild(p);
             }
         }
